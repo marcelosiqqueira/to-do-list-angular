@@ -1,5 +1,6 @@
 import { Task } from './../shared/task';
 import { Component, Input, OnInit } from '@angular/core';
+import { TaskService } from '../shared/task.service';
 
 @Component({
   selector: 'app-task-list-item',
@@ -7,13 +8,21 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./task-list-item.component.css']
 })
 export class TaskListItemComponent implements OnInit {
-    @Input() task: Task;
+    @Input()
+    task: Task;
 
-    constructor() {
+    constructor(private taskService: TaskService) {
       this.task = new Task();
     }
 
-    ngOnInit() {
+    remove(task: Task) {
+      this.taskService.delete(task.id);
+    }
 
+    onCompletedCheckChange(task: Task) {
+      this.taskService.save(task);
+    }
+
+    ngOnInit() {
     }
 }
