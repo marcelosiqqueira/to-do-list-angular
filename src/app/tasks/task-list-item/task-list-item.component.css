@@ -1,0 +1,11 @@
+.task-completed {
+  text-decoration: line-through;
+}
+
+.task-item-description {
+  flex-grow: 1;
+}
+
+.change-btn {
+  margin-right: 5px;
+}
